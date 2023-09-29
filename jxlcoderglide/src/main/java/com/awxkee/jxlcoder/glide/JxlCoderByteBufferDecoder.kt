@@ -31,6 +31,7 @@ package com.awxkee.jxlcoder.glide
 import android.graphics.Bitmap
 import android.os.Build
 import com.awxkee.jxlcoder.JxlCoder
+import com.awxkee.jxlcoder.JxlResizeFilter
 import com.awxkee.jxlcoder.PreferredColorConfig
 import com.awxkee.jxlcoder.ScaleMode
 import com.bumptech.glide.load.DecodeFormat
@@ -84,7 +85,14 @@ class JxlCoderByteBufferDecoder(private val bitmapPool: BitmapPool) :
             }
 
         val bitmap =
-            coder.decodeSampled(src, idealWidth, idealHeight, preferredColorConfig, ScaleMode.FIT)
+            coder.decodeSampled(
+                src,
+                idealWidth,
+                idealHeight,
+                preferredColorConfig,
+                ScaleMode.FIT,
+                JxlResizeFilter.CATMULL_ROM
+            )
 
         return BitmapResource.obtain(bitmap, bitmapPool)
     }
