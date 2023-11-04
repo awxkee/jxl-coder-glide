@@ -16,7 +16,7 @@ afterEvaluate {
             create<MavenPublication>("mavenJava") {
                 groupId = "com.github.awxkee"
                 artifactId = "jxl-coder-glide"
-                version = "1.5.1"
+                version = "1.5.5"
                 from(components.findByName("release"))
 //                artifact("androidSourcesJar")
             }
@@ -33,7 +33,7 @@ android {
     }
 
     namespace = "com.awxkee.jxlcoder.glide"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -71,6 +71,6 @@ dependencies {
     api("io.coil-kt:coil:2.4.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
-    api("com.github.awxkee:jxl-coder:1.5.4")
+    api("com.github.awxkee:jxl-coder:1.5.5")
 
 }
