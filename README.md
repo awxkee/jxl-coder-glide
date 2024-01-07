@@ -15,7 +15,7 @@ repositories {
 ```
 
 ```groovy
-implementation 'com.github.awxkee:avif-coder-glide:1.5.7' // or any version above picker from release tags
+implementation 'com.github.awxkee:avif-coder-glide:1.6.0' // or any version above picker from release tags
 ```
 
 # Usage
