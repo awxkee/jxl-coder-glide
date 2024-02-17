@@ -16,7 +16,7 @@ afterEvaluate {
             create<MavenPublication>("mavenJava") {
                 groupId = "com.github.awxkee"
                 artifactId = "jxl-coder-glide"
-                version = "1.9.0"
+                version = "1.10.0"
                 from(components.findByName("release"))
 //                artifact("androidSourcesJar")
             }
@@ -71,6 +71,6 @@ dependencies {
     api("io.coil-kt:coil:2.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
-    api("com.github.awxkee:jxl-coder:1.9.0")
+    api("com.github.awxkee:jxl-coder:1.10.0")
 
 }
