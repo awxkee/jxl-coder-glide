@@ -15,7 +15,7 @@ repositories {
 ```
 
 ```groovy
-implementation 'com.github.awxkee:jxl-coder-glide:2.1.7' // or any version above picker from release tags
+implementation 'com.github.awxkee:jxl-coder-glide:2.1.8' // or any version above picker from release tags
 ```
 
 # Usage
