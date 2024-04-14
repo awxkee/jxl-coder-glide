@@ -25,7 +25,7 @@ mavenPublishing {
     coordinates("io.github.awxkee", "jxl-coder-glide", System.getenv("VERSION_NAME") ?: "0.0.10")
 
     pom {
-        name.set("Jxl Coder Coil")
+        name.set("Jxl Coder Glide")
         description.set("JPEG XL decoder for android Glide")
         inceptionYear.set("2023")
         url.set("https://github.com/awxkee/jxl-coder-glide")
