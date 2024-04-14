@@ -6,16 +6,10 @@ The Glide JXL Plugin is an efficient and versatile library that seamlessly integ
 
 Just add app glide module in your main project and all will start work automatically
 
-# Add Jitpack repository
+# Add repository
 
 ```groovy
-repositories {
-    maven { url "https://jitpack.io" }
-}
-```
-
-```groovy
-implementation 'com.github.awxkee:jxl-coder-glide:2.1.9' // or any version above picker from release tags
+implementation 'io.github.awxkee:jxl-coder-glide:2.2.0' // or any version above picker from release tags
 ```
 
 # Usage
@@ -28,6 +22,18 @@ val imageUrl = "https://example.com/your_image.jxl"
 Glide.with(this)
   .load(imageUrl)
   .into(imageView)
+```
+
+# ~~Add Jitpack repository~~ Since 2.2.0 Deprecated
+
+```groovy
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+
+```groovy
+implementation 'com.github.awxkee:jxl-coder-glide:2.1.9' // or any version above picker from release tags
 ```
 
 # Disclaimer

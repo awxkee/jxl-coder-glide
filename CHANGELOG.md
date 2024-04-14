@@ -1,0 +1,1 @@
+Rework to maven central, upgrade JXL Coder to next version
