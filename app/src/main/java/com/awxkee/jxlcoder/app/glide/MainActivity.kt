@@ -4,10 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,20 +35,22 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Greeting("Android")
 
-                    Button(modifier = Modifier
-                        .width(50.dp)
-                        .height(
-                            50.dp
-                        ), onClick = {
-                        startActivity(Intent(this@MainActivity, ProbeActivity::class.java))
-                    }) {
-                        Text("View Activity")
-                    }
+                    Column {
+                        GlideImage(
+                            model = "https://wh.aimuse.online/preset/jxl_icc_12.bit.jxl",
+                            contentDescription = ""
+                        )
 
-                    GlideImage(
-                        model = "https://wh.aimuse.online/preset/jxl_icc_12.bit.jxl",
-                        contentDescription = ""
-                    )
+                        FilledTonalButton(modifier = Modifier
+                            .padding(start = 8.dp, top = 8.dp)
+                            .height(
+                                50.dp
+                            ), onClick = {
+                            startActivity(Intent(this@MainActivity, ProbeActivity::class.java))
+                        }) {
+                            Text("View View Activity")
+                        }
+                    }
 
                 }
             }

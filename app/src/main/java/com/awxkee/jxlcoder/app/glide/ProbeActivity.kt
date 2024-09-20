@@ -29,6 +29,7 @@
 package com.awxkee.jxlcoder.app.glide
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.bumptech.glide.Glide
 
@@ -42,6 +43,10 @@ class ProbeActivity: ComponentActivity() {
             .asBitmap()
             .load("https://wh.aimuse.online/preset/jxl_icc_12.bit.jxl")
             .into(findViewById(R.id.image_view))
+
+        findViewById<Button>(R.id.out_button).setOnClickListener {
+            finish()
+        }
     }
 
 }
