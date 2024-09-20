@@ -5,8 +5,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
     id("signing")
+    id("com.vanniktech.maven.publish") version "0.28.0"
     id("com.google.devtools.ksp")
-    id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
 task("androidSourcesJar", Jar::class) {
@@ -85,11 +85,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
 }
 
@@ -102,5 +102,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:ksp:4.16.0")
+
     api("io.github.awxkee:jxl-coder:2.3.0")
 }
