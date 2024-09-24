@@ -45,14 +45,13 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.util.ByteBufferUtil
 import java.nio.ByteBuffer
 
-class JxlCoderByteBufferDecoder(private val bitmapPool: BitmapPool) :
+class JxlCoderByteBufferDecoder(private val bitmapPool: BitmapPool, private val checker: JxlChecker<ByteBuffer>) :
     ResourceDecoder<ByteBuffer, Bitmap> {
 
     private val coder = JxlCoder
 
     override fun handles(source: ByteBuffer, options: Options): Boolean {
-        val bytes = ByteBufferUtil.toBytes(source)
-        return JxlCoder.isJXL(bytes)
+        return checker.isJXL(source)
     }
 
     override fun decode(

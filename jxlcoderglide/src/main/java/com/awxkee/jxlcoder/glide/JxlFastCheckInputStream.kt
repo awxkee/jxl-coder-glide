@@ -1,10 +1,10 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Radzivon Bartoshyk
+ * Copyright (c) 2024 Radzivon Bartoshyk
  * jxl-coder [https://github.com/awxkee/jxl-coder]
  *
- * Created by Radzivon Bartoshyk on 18/9/2023
+ * Created by Radzivon Bartoshyk on 24/9/2024
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,21 +28,17 @@
 
 package com.awxkee.jxlcoder.glide
 
-import android.content.Context
-import android.graphics.Bitmap
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Registry
-import com.bumptech.glide.annotation.GlideModule
-import com.bumptech.glide.module.LibraryGlideModule
+import com.awxkee.jxlcoder.JxlCoder
 import java.io.InputStream
-import java.nio.ByteBuffer
 
-@GlideModule
-class JxlCoderGlideModule : LibraryGlideModule() {
-    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        val byteBufferBitmapDecoder = JxlCoderByteBufferDecoder(glide.bitmapPool, JxlFastCheckByteBuffer())
-        registry.prepend(ByteBuffer::class.java, Bitmap::class.java, byteBufferBitmapDecoder)
-        val streamBitmapDecoder = JxlCoderStreamDecoder(glide.bitmapPool, JxlFastCheckInputStream())
-        registry.prepend(InputStream::class.java, Bitmap::class.java, streamBitmapDecoder)
+class JxlFastCheckInputStream : JxlChecker<InputStream> {
+    override fun isJXL(data: InputStream): Boolean {
+        val headerBytes = ByteArray(24)
+        val bytesRead: Int = data.read(headerBytes, 0, 24)
+
+        if (bytesRead == -1 || bytesRead < 24) {
+            return false
+        }
+        return JxlCoder.isJXL(headerBytes)
     }
 }

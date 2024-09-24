@@ -36,23 +36,16 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
 import com.bumptech.glide.util.ByteBufferUtil
 import java.io.InputStream
 
-class JxlCoderStreamDecoder(private val bitmapPool: BitmapPool) :
-    ResourceDecoder<InputStream, Bitmap> {
+class JxlCoderStreamDecoder(private val bitmapPool: BitmapPool, private val checker: JxlChecker<InputStream>) : ResourceDecoder<InputStream, Bitmap> {
 
-    private val byteBufferDecoder = JxlCoderByteBufferDecoder(bitmapPool)
+    private val byteBufferDecoder = JxlCoderByteBufferDecoder(bitmapPool, JxlFastCheckByteBuffer())
 
     override fun handles(source: InputStream, options: Options): Boolean {
-        val bb = ByteBufferUtil.fromStream(source)
-        source.reset()
-        bb.rewind()
-        return byteBufferDecoder.handles(bb, options)
+        return checker.isJXL(source)
     }
 
     override fun decode(
-        source: InputStream,
-        width: Int,
-        height: Int,
-        options: Options
+        source: InputStream, width: Int, height: Int, options: Options
     ): Resource<Bitmap>? {
         val bb = ByteBufferUtil.fromStream(source)
         source.reset()
