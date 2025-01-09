@@ -30,6 +30,7 @@ package com.awxkee.jxlcoder.glide
 
 import android.graphics.Bitmap
 import android.os.Build
+import android.util.Log
 import com.awxkee.jxlcoder.JxlCoder
 import com.awxkee.jxlcoder.JxlResizeFilter
 import com.awxkee.jxlcoder.PreferredColorConfig

@@ -48,7 +48,6 @@ class JxlCoderStreamDecoder(private val bitmapPool: BitmapPool, private val chec
         source: InputStream, width: Int, height: Int, options: Options
     ): Resource<Bitmap>? {
         val bb = ByteBufferUtil.fromStream(source)
-        source.reset()
         bb.rewind()
         return byteBufferDecoder.decode(bb, width, height, options)
     }

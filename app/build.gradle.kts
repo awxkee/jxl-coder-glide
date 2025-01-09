@@ -74,4 +74,6 @@ dependencies {
     implementation(project(":jxlcoderglide"))
 //    implementation("com.github.awxkee:jxl-coder-glide:1.5.1")
     implementation("com.github.bumptech.glide:compose:1.0.0-alpha.5")
+
+    implementation("com.squareup.okio:okio:3.3.0")
 }
