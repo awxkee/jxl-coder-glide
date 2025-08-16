@@ -103,5 +103,5 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:ksp:4.16.0")
 
-    api("io.github.awxkee:jxl-coder:2.4.1")
+    api("io.github.awxkee:jxl-coder:2.5.0")
 }
