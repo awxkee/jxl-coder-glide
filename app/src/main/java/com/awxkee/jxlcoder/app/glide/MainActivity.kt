@@ -45,8 +45,7 @@ class MainActivity : ComponentActivity() {
                     LazyColumn {
                         item {
                             GlideImage(
-//                            model = "https://wh.aimuse.online/preset/jxl_icc_12.bit.jxl",
-                                model = Uri.parse("file:///android_asset/pexels-lastly-808465.jxl"),
+                            model = "https://wh.aimuse.online/preset/jxl_icc_12.bit.jxl",
                                 contentDescription = "",
                             ) { requestBuilder ->
                                 requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE)
