@@ -32,7 +32,6 @@ jobs:
       - name: Compile to maven local
         env:
           VERSION_NAME: "1.0.0"
-          PUBLISH_STATE: Release
           ORG_GRADLE_PROJECT_mavenCentralUsername: "stub"
           ORG_GRADLE_PROJECT_mavenCentralPassword: "stub"
           ORG_GRADLE_PROJECT_signingInMemoryKey: "stub"
