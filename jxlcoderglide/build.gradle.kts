@@ -1,24 +1,28 @@
 import com.vanniktech.maven.publish.AndroidMultiVariantLibrary
+import com.vanniktech.maven.publish.DeploymentValidation
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
-    id("signing")
-    id("com.vanniktech.maven.publish") version "0.34.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
     id("com.google.devtools.ksp")
 }
 
-task("androidSourcesJar", Jar::class) {
-    archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs)
-}
-
 mavenPublishing {
+    if (System.getenv("PUBLISH_STATE") == "Release") {
+        publishToMavenCentral(
+            automaticRelease = true,
+            validateDeployment = DeploymentValidation.PUBLISHED
+        )
+        signAllPublications()
+    }
+
     configure(
         AndroidMultiVariantLibrary(
-            sourcesJar = true,
-            publishJavadocJar = true,
+            JavadocJar.Javadoc(),
+            SourcesJar.Sources(),
         )
     )
 
@@ -88,20 +92,22 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
-    implementation("com.github.bumptech.glide:glide:5.0.5")
-    ksp("com.github.bumptech.glide:ksp:5.0.5")
+    implementation("com.github.bumptech.glide:glide:5.0.7")
+    ksp("com.github.bumptech.glide:ksp:5.0.7")
 
-    api("io.github.awxkee:jxl-coder:2.6.0")
+    api("io.github.awxkee:jxl-coder:2.6.1")
 }
